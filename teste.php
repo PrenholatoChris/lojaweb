@@ -54,8 +54,11 @@
             
                 echo $vetor["salgado"];
     
+                $data = new DateTimeZone('3h');
         ?>
 
     </p>
+
+    <h1> <?= "" . new DateTimeZone('3h')?></h1>
 </body>
 </html>
