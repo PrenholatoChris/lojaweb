@@ -32,7 +32,7 @@
         $email = $_REQUEST["buscar"];
         $sql = $con->prepare("SELECT * FROM AUTORES WHERE email LIKE CONCAT('%', :email '%')");
         $sql->bindValue(':email', $email);
-        echo $sql->;
+        
         $sql->execute();
 
         if($sql->rowCount() > 0){
