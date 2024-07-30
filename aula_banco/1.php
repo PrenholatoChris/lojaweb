@@ -11,16 +11,17 @@
         <a href="conexao.php?opcao=1">incluir</a>
         <a href="conexao.php?opcao=2">Atualizar</a>
         <a href="conexao.php?opcao=3">Excluir</a>
-        <a href="conexao.php?opcao=4">Selecionar um</a>
-        <hr width="50">
+        <a href="conexao.php?opcao=4">Selecionar</a>
+        <hr width="50%">
 
-        <form action="">
+        <form action="conexao.php" method="post">
             <label for="buscar">Buscar Autor(email):</label>
             <input size="40" name="buscar" type="text">
             <input type="hidden" name="opcao" value="5">
             <p><button type="submit">Buscar</button></p>
         </form>
     </div>
+
 
 </body>
 </html>
