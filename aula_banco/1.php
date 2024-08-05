@@ -8,13 +8,13 @@
 <body>
     
     <div align="center">
-        <a href="conexao.php?opcao=1">incluir</a>
-        <a href="conexao.php?opcao=2">Atualizar</a>
-        <a href="conexao.php?opcao=3">Excluir</a>
-        <a href="conexao.php?opcao=4">Selecionar</a>
+        <a href="formLivro.php?opcao=1">incluir</a>
+        <a href="formLivro.php?opcao=2">Atualizar</a>
+        <a href="formLivro.php?opcao=3">Excluir</a>
+        <a href="formLivro.php?opcao=4">Selecionar</a>
         <hr width="50%">
 
-        <form action="conexao.php" method="post">
+        <form action="formLivro.php" method="post">
             <label for="buscar">Buscar Autor(email):</label>
             <input size="40" name="buscar" type="text">
             <input type="hidden" name="opcao" value="5">
