@@ -38,7 +38,35 @@
             <a href='1.php'>Voltar ao inicio</a>";
     }
     elseif ($opcao == 2){//Alterar
-        $con->query("update autores set nome = 'Batman', email = 'soldado_da_noite@email.bat', dt_nasc = '1990-10-10' where autor_id = 48");
+        $isbn = $_REQUEST["isbn"];
+        $sql = $con->prepare("select * from livros where ISBN = :isbn");
+        $sql->bindValue(":isbn",$isbn);
+        $sql->execute();
+        if($sql->rowCount() == 1){
+            $livro = $sql->fetch(PDO::FETCH_OBJ);
+            header("Location: attlivro.php?isbn=$isbn&titulo=$livro->titulo&edicao_num=$livro->edicao_num&ano_publicacao=$livro->ano_publicacao&descricao=$livro->descricao");
+        }else{
+            header("Location: attlivro.php?erro=1");
+        }
+
+
+    }
+    elseif ($opcao == 20){//Alterar
+        $isbn = $_REQUEST["isbn"];
+        $titulo = $_REQUEST["titulo"];
+        $edicao_num = $_REQUEST["edicao_num"];
+        $ano_publicacao = $_REQUEST["ano_publicacao"];
+        $descricao = $_REQUEST["descricao"];
+
+        $sql = $con->prepare("UPDATE LIVROS SET ISBN = :isbn, TITULO = :titulo, EDICAO_NUM = :edicao_num, ANO_PUBLICACAO = :ano_publicacao, DESCRICAO = :descricao WHERE ISBN = :isbn");
+        $sql->bindValue(":isbn",$isbn);
+        $sql->bindValue(":titulo",$titulo);
+        $sql->bindValue(":edicao_num",$edicao_num);
+        $sql->bindValue(":ano_publicacao",$ano_publicacao);
+        $sql->bindValue(":descricao",$descricao);
+        $sql->execute();
+
+        header("Location: 1.php");
     }
     elseif ($opcao == 3){//Remover
         $con->query("delete from autores where autor_id = 55");

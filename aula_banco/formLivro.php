@@ -31,6 +31,16 @@
         ';
 
     }
+    elseif ($opcao == 2) {
+        echo '<form action="conexao.inc.php" method="post">
+            <label for="isbn">isbn:</label>
+            <input type="text" name="isbn"><br><br>
+            <input type="hidden" name="opcao" value=2>
+
+            <button type="submit">Buscar</button>
+
+        </form>';
+    }
 
 
 
