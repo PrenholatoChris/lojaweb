@@ -34,11 +34,8 @@
                         if(isset($_REQUEST["erro"])){
                             $erro = $_REQUEST["erro"];
                             if($erro==1)
-                            echo "<strong>Login Errado!</strong>";
+                            echo "<strong style='color:red' >Erro de Login!</strong>";
                         }
-
-                        
-
 
                     ?>
 

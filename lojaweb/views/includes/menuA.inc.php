@@ -51,7 +51,13 @@
 
                 <div class="col-md-3 text-end">
                                     
-                      <a class="btn btn-outline-primary me-2" role="button" href="formLogin.php">Login</a>                  
-                                    
+                <?php 
+                  // session_start();
+                  if(!isset($_SESSION['clienteLogado'])){
+                    echo '<a class="btn btn-outline-primary me-2" role="button" href="formLogin.php">Login</a>';
+                  }else{
+                    include_once "modal.inc.php";
+                  }
+                ?>           
                 </div>
               </header>
