@@ -5,7 +5,7 @@
 <h1 class="text-center">Inclusão de produto</h1>
 <p> 
   
-<form class="row g-3" action="#" method="post">
+<form class="row g-3" action="../controlers/controlerProduto.php" method="post">
   <div class="col-md-3">
     <label for="pReferencia" class="form-label">Nº Referencia</label>
     <input type="text" class="form-control" name="pReferencia">
