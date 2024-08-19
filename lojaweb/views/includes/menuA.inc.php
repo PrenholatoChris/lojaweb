@@ -9,13 +9,13 @@
                   <li><a href="index.php" class="nav-link px-2 link-secondary">Home</a></li>
                   
                   <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle link-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    <a class="nav-link dropdown-toggle link-dark" href="exibirProdutos.php" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                       Produtos
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#">Cadastrar</a></li>
+                      <li><a class="dropdown-item" href="./formProduto.php">Cadastrar</a></li>
                       <li><a class="dropdown-item" href="#">Cadastrar Vários</a></li>
-                      <li><a class="dropdown-item" href="#">Consultar</a></li>
+                      <li><a class="dropdown-item" href="./exibirProdutos.php">Consultar</a></li>
                       <li><hr class="dropdown-divider"></li>
                       <li><a class="dropdown-item" href="#">Show Room</a></li>
                     </ul>

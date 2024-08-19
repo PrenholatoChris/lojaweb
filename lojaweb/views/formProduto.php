@@ -49,7 +49,7 @@
     <button type="submit" class="btn btn-primary">Incluir</button>
     <button type="reset" class="btn btn-danger">Cancelar</button>
   </div>
-  <input type="hidden" name="opcao" value="1">
+  <input type="hidden" name="pOpcao" value="1">
 </form>
 
 <?php

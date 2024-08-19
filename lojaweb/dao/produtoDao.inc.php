@@ -3,7 +3,7 @@ require_once 'conexao.inc.php';
 require_once '../classes/produto.inc.php';
 require_once '../utils/funcoesUteis.php';
 
-class ClienteDao{
+class ProdutoDao{
     private $con;
 
     function __construct(){
@@ -13,7 +13,7 @@ class ClienteDao{
 
     function getAllProdutos(){
         $produtos = $this->con->query("SELECT * FROM PRODUTOS");
-        return $produtos->fetch(PDO::FETCH_ASSOC);
+        return $produtos->fetchAll(PDO::FETCH_OBJ);
     }
 
     function insertProduto(Produto $produto){
@@ -37,6 +37,17 @@ class ClienteDao{
         // $query->bindValue(':referencia',$referencia);
         // $query->bindValue(':cod_fabricante',$cod_fabricante);
         
+    }
+    function deleteProdutoById($produto_id){
+        $query = $this->con->prepare("DELETE FROM PRODUTOS WHERE PRODUTO_ID = :id");
+        $query->bindValue(':id',$produto_id);
+        $query->execute();
+    }
+    
+    function deleteProduto(Produto $produto){
+        $query = $this->con->prepare("DELETE FROM PRODUTOS WHERE PRODUTO_ID = :id");
+        $query->bindValue(':id',$produto->id);
+        $query->execute();
     }
 }
 
