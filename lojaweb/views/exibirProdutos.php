@@ -1,5 +1,7 @@
 <?php        
       require_once 'includes/cabecalho.inc.php';   
+      require_once '../classes/produto.inc.php';
+      require_once '../utils/funcoesUteis.php';
 ?>
 <p>
 <h1 class="text-center">Produtos do estoque</h1>
@@ -20,19 +22,27 @@
       </thead>
       <tbody class="table-group-divider">
       <?php
-         // percurso aqui
-               echo "<tr align='center'>";
-               echo "<td>"."ID 0"."</td>";
-               echo "<td><strong>"."NOME"."</strong></td>";
-               echo "<td>"."RESUMO"."</td>";
-               echo "<td>"."DATA FORMATADA"."</td>";
-               echo "<td>"."R$ PREÇO"."</td>";
-               echo "<td>"."ESTOQUE"."</td>";
-               echo "<td>"."FABRICANTE"."</td>";
-               echo "<td><a href='#' class='btn btn-success btn-sm'>A</a> ";
-               echo "<a href='#' class='btn btn-danger btn-sm'>X</a></td>";
-               echo "</tr>";
-         
+            $produtos = [];
+            if(isset($_SESSION["allProdutos"])){
+                  $produtos = $_SESSION["allProdutos"];
+            // }else{
+            //       header('Location: ../controlers/controlerProduto.php?pOpcao=2');
+            // }
+
+            foreach ($produtos as $prd) {
+                  echo "<tr align='center'>";
+                  echo "<td>"."$prd->produto_id"."</td>";
+                  echo "<td><strong>"."$prd->nome"."</strong></td>";
+                  echo "<td>"."$prd->resumo"."</td>";
+                  echo "<td>". converterDataFromMySql($prd->data_fabricacao)."</td>";
+                  echo "<td>"."$prd->preco"."</td>";
+                  echo "<td>"."$prd->estoque"."</td>";
+                  echo "<td>"."$prd->cod_fabricante"."</td>";
+                  echo "<td><a href='../controlers/controlerProduto.php?pOpcao=4&pId=$prd->produto_id' class='btn btn-success btn-sm'>A</a> ";
+                  echo "<a href='../controlers/controlerProduto.php?pOpcao=3&produto_id=$prd->produto_id' class='btn btn-danger btn-sm'>X</a></td>";
+                  echo "</tr>";
+                  }
+            }
       ?>
       </tbody>  
 </table>

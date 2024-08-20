@@ -8,7 +8,7 @@
 
     <li><a href="index.php" class="nav-link px-2 link-secondary">Home</a></li>
 
-    <li><a href="#" class="nav-link px-2 link-secondary">Produtos da Loja</a></li>
+    <li><a href="./exibirProdutos.php" class="nav-link px-2 link-secondary">Produtos da Loja</a></li>
 
     <li class="nav-item dropdown">
       <a class="nav-link dropdown-toggle link-dark" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -39,8 +39,14 @@
   </ul>
 
   <div class="col-md-3 text-end">
-    
-      <a class="btn btn-outline-primary me-2" role="button" href="#">Login</a>
+    <?php 
+      if(!isset($_SESSION['clienteLogado'])){
+        echo '<a class="btn btn-outline-primary me-2" role="button" href="formLogin.php">Login</a>';
+      }else{
+        include_once "modal.inc.php";
+      }
+    ?>
+        
     
   </div>
 </header>
