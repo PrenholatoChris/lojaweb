@@ -45,6 +45,8 @@ class ClienteDao{
         $query->bindValue(':email',$email);
         $query->bindValue(':rg',$rg);
         $query->bindValue(':tipo',$tipo);
+        $query->execute();
+        
     }
 }
 
