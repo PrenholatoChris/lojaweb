@@ -26,7 +26,17 @@
     <label for="pFabricante" class="form-label">Fabricante</label>
     <select name="pFabricante" class="form-select">
       <option selected value="0">Escolha...</option>
-      <option selected value="1">Fabricante 1</option>
+
+      <?php 
+        $fabricantes =[];
+        if(isset($_SESSION["fabricantes"])){
+          $fabricantes = $_SESSION['fabricantes'];        
+        }
+        foreach($fabricantes as $fabricante){
+          echo "<option value='$fabricante->codigo'>$fabricante->nome</option>";
+        }
+      ?>
+      <!-- <option selected value="1">Fabricante 1</option> -->
     </select>
   </div>
   <div class="col-md-2">
