@@ -35,7 +35,7 @@ class ProdutoDao{
     }
 
     function getAllProdutos(){
-        $produtos = $this->con->query("SELECT * FROM PRODUTOS");
+        $produtos = $this->con->query("SELECT *, (select NOME FROM FABRICANTES WHERE CODIGO = PRODUTOS.COD_FABRICANTE) AS nome_fabricante FROM PRODUTOS");
         return $produtos->fetchAll(PDO::FETCH_OBJ);
     }
 
@@ -53,6 +53,7 @@ class ProdutoDao{
         $query->execute();
         
     }
+    
     function deleteProdutoById($produto_id){
         $query = $this->con->prepare("DELETE FROM PRODUTOS WHERE PRODUTO_ID = :id");
         $query->bindValue(':id',$produto_id);
@@ -66,9 +67,11 @@ class ProdutoDao{
     }
 
     function atualizarProduto(Produto $produto){
-        $query = $this->con->prepare("UPDATE PRODUTOS SET NOME = :nome, DATA_FABRICACAO = :data_fabricacao, PRECO = :preco, ESTOQUE = :estoque, DESCRICAO = :descricao, RESUMO = :resumo, REFERENCIA = :referencia, COD_FABRICANTE = :cod_fabricante");
+        $query = $this->con->prepare("UPDATE PRODUTOS SET NOME = :nome, DATA_FABRICACAO = :data_fabricacao, PRECO = :preco, ESTOQUE = :estoque, DESCRICAO = :descricao, RESUMO = :resumo, REFERENCIA = :referencia, COD_FABRICANTE = :cod_fabricante
+        WHERE PRODUTO_ID = :id");
+        $query->bindValue(':id',$produto->produto_id);
         $query->bindValue(':nome',$produto->nome);
-        $query->bindValue(':data_fabricacao', converterDataToMysql($produto->data_fabricacao));
+        $query->bindValue(':data_fabricacao', $produto->data_fabricacao);
         $query->bindValue(':preco',$produto->preco);
         $query->bindValue(':estoque',$produto->estoque);
         $query->bindValue(':descricao',$produto->descricao);

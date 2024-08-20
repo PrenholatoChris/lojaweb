@@ -38,8 +38,8 @@
         $_SESSION['produto'] = $produto;
         header('Location: controlerFabricante.php?pOpcao=3');
     }else if($opcao == 5){#atualizar
-        $dao = new ProdutoDao();
         $prd = new Produto();
+        $prd->produto_id = $_REQUEST["pId"];
         $prd->nome = $_REQUEST["pNome"];
         $prd->referencia = $_REQUEST["pReferencia"];
         $prd->preco = $_REQUEST["pPreco"];
@@ -48,12 +48,10 @@
         $prd->data_fabricacao = $_REQUEST["pDataFabricacao"];
         $prd->resumo = $_REQUEST["pResumo"];
         $prd->cod_fabricante = $_REQUEST["pFabricante"];
-        $prd->produto_id = $_REQUEST["pId"];
+
+        $dao = new ProdutoDao();
         $dao->atualizarProduto($prd);
-        // header('Location: controlerFabricante.php?pOpcao=1');
-
-
-        // header('Location: ../views/formProdutoAtualizar.php');
+        header('Location: controlerProduto.php?pOpcao=2');
     }
 
 ?>

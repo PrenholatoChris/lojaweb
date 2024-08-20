@@ -5,7 +5,7 @@
 <h1 class="text-center">Inclusão de produto</h1>
 <p> 
   
-<form class="row g-3" action="../controlers/controlerProduto.php" method="post">
+<form class="row g-3" action="../controlers/controlerProduto.php" method="post" enctype="multipart/form-data">
   <div class="col-md-3">
     <label for="pReferencia" class="form-label">Nº Referencia</label>
     <input type="text" class="form-control" name="pReferencia">
@@ -36,7 +36,7 @@
           echo "<option value='$fabricante->codigo'>$fabricante->nome</option>";
         }
       ?>
-      <!-- <option selected value="1">Fabricante 1</option> -->
+
     </select>
   </div>
   <div class="col-md-2">

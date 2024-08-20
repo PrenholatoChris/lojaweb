@@ -1,5 +1,6 @@
 <?php 
     class Produto{
+        private int $produto_id;
         private string $nome;
         private $data_fabricacao;
         private float $preco;
@@ -8,6 +9,7 @@
         private string $resumo;
         private string $referencia;
         private int $cod_fabricante;
+        private  $imagem;
 
         // function Produto(){}
 

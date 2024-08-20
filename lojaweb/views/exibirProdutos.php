@@ -37,7 +37,7 @@
                   echo "<td>". converterDataFromMySql($prd->data_fabricacao)."</td>";
                   echo "<td>"."$prd->preco"."</td>";
                   echo "<td>"."$prd->estoque"."</td>";
-                  echo "<td>"."$prd->cod_fabricante"."</td>";
+                  echo "<td>"."$prd->nome_fabricante"."</td>";
                   echo "<td><a href='../controlers/controlerProduto.php?pOpcao=4&pId=$prd->produto_id' class='btn btn-success btn-sm'>A</a> ";
                   echo "<a href='../controlers/controlerProduto.php?pOpcao=3&produto_id=$prd->produto_id' class='btn btn-danger btn-sm'>X</a></td>";
                   echo "</tr>";

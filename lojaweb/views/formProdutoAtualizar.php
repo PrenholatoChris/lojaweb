@@ -42,9 +42,9 @@
       }
       foreach ($fabricantes as $fabricante) {
         if($fabricante->codigo == $prd->cod_fabricante){
-          echo "<option selected value='$fabricante->fabricante_id'>$fabricante->nome</option>";
+          echo "<option selected value='$fabricante->codigo'>$fabricante->nome</option>";
         }else{
-          echo "<option value=$fabricante->fabricante_id>$fabricante->nome</option>";
+          echo "<option value=$fabricante->codigo>$fabricante->nome</option>";
         }
       }
       ?>

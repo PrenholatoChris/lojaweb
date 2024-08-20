@@ -48,6 +48,14 @@ class ClienteDao{
         $query->execute();
         
     }
+
+    private function getFabricante($id){
+        $sql = $this->con->prepare("SELECT NOME FROM FABRICANTES WHERE CODIGO = :id");
+        $sql->bindValue(":id", $id);
+        $sql->execute();
+        $fabricante = $sql->fetch(PDO::FETCH_OBJ);
+        return $fabricante->nome;
+    }
 }
 
 
