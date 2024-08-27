@@ -21,10 +21,14 @@
         $dao = new ProdutoDao();
         $dao->insertProduto($prd);
         header('Location: controlerFabricante.php?pOpcao=1');
-    }elseif ($opcao ==2) {
+    }elseif ($opcao ==2 || $opcao == 6) {
         $dao = new ProdutoDao();
         $_SESSION['allProdutos'] = $dao->getAllProdutos();
-        header('Location: ../views/exibirProdutos.php');
+        if($opcao==2){
+            header('Location: ../views/exibirProdutos.php');
+        }elseif ($opcao==6) {
+            header('Location: ../views/produtosVenda.php');
+        }
     }else if($opcao == 3){
         $dao = new ProdutoDao();
         $produto_id = $_REQUEST["produto_id"];

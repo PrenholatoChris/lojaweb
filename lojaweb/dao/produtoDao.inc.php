@@ -27,7 +27,7 @@ class ProdutoDao{
     }
 
     function getProdutoById($id){
-        $produto = $this->con->query("SELECT * FROM PRODUTOS WHERE PRODUTO_ID = $id");
+        $produto = $this->con->query("SELECT *, (select NOME FROM FABRICANTES WHERE CODIGO = PRODUTOS.COD_FABRICANTE) AS nome_fabricante FROM PRODUTOS WHERE PRODUTO_ID = $id");
         $prd = $produto->fetch(PDO::FETCH_OBJ);
         // $prd = $this->sqlToClass($prd);
         
