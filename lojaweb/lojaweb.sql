@@ -7,6 +7,10 @@
 -- Versão do servidor: 10.4.14-MariaDB
 -- versão do PHP: 7.4.11
 
+drop database lojaweb;
+create database lojaweb;
+use lojaweb;
+
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";

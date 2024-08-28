@@ -59,7 +59,7 @@
       <div class="container text-center">
             <div class="row">
                   <div class="col">
-                        <a class="btn btn-warning" role="button" href="#"><b>Continuar comprando</b></a>
+                        <a class="btn btn-warning" role="button" href="../controlers/controlerProduto.php?pOpcao=6"><b>Continuar comprando</b></a>
                   </div>
                   <div class="col">
                         <a class="btn btn-danger" role="button" href="../controlers/controlerCarrinho.php?pOpcao=2"><b>Esvaziar carrinho</b></a>
