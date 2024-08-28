@@ -13,7 +13,7 @@
                       Produtos
                     </a>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="../views/formProduto.php">Cadastrar</a></li>
+                      <li><a class="dropdown-item" href="../controlers/controlerFabricante.php?pOpcao=2">Cadastrar</a></li>
                       <li><a class="dropdown-item" href="#">Cadastrar Vários</a></li>
                       <li><a class="dropdown-item" href="#">Consultar</a></li>
                       <li><hr class="dropdown-divider"></li>
