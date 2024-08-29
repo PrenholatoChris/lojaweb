@@ -9,11 +9,10 @@
         private string $resumo;
         private string $referencia;
         private int $cod_fabricante;
-        private  $imagem;
 
         // function Produto(){}
 
-        function setProduto($nome, $data_fabricacao, $preco, $estoque, $descricao, $resumo, $referencia, $cod_fabricante){
+        function setProduto($nome, $data_fabricacao, $preco, $estoque, $descricao, $resumo, $referencia, $cod_fabricante, $imagem){
             $this->$nome = $nome;
             $this->$data_fabricacao = strtotime($data_fabricacao);
             $this->$preco = $preco;
@@ -21,7 +20,7 @@
             $this->$descricao = $descricao;
             $this->$resumo = $resumo;
             $this->$referencia = $referencia;
-            $this->$estoque = $estoque;
+            $this->$cod_fabricante = $cod_fabricante;
         }
 
         function __set($atrib, $value){

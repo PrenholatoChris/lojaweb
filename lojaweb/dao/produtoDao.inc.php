@@ -12,7 +12,7 @@ class ProdutoDao{
     
     }
 
-    function sqlToClass($row){
+    function toClass($row){
         $produto = new Produto();
         $produto->produto_id = $row->produto_id;
         $produto->nome = $row->nome;
@@ -23,6 +23,7 @@ class ProdutoDao{
         $produto->resumo = $row->resumo;
         $produto->referencia = $row->referencia;
         $produto->cod_fabricante = $row->cod_fabricante;
+        $produto->imagem = $row->imagem;
         return $produto;
     }
 
@@ -43,7 +44,7 @@ class ProdutoDao{
         $query = $this->con->prepare("INSERT INTO PRODUTOS ( NOME, DATA_FABRICACAO, PRECO, ESTOQUE, DESCRICAO, RESUMO, REFERENCIA, COD_FABRICANTE)
         VALUES (:nome, :data_fabricacao, :preco, :estoque, :descricao, :resumo, :referencia, :cod_fabricante)");
         $query->bindValue(':nome',$produto->nome);
-        $query->bindValue(':data_fabricacao', converterDataToMysql($produto->data_fabricacao));
+        $query->bindValue(':data_fabricacao', ($produto->data_fabricacao));
         $query->bindValue(':preco',$produto->preco);
         $query->bindValue(':estoque',$produto->estoque);
         $query->bindValue(':descricao',$produto->descricao);
@@ -51,7 +52,12 @@ class ProdutoDao{
         $query->bindValue(':referencia',$produto->referencia);
         $query->bindValue(':cod_fabricante',1000);//$produto->cod_fabricante);
         $query->execute();
-        
+    }
+
+    function getUltimoId(){
+        $query = $this->con->query("SELECT MAX(produto_id) as produto_id FROM produtos");
+        $prd = $query->fetch(PDO::FETCH_OBJ);
+        return (int)$prd->produto_id;
     }
     
     function deleteProdutoById($produto_id){

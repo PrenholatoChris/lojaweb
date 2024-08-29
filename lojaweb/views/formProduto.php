@@ -44,8 +44,8 @@
     <input type="text" class="form-control" name="pEstoque">
   </div>
   <div class="col-md-4">
-    <label for="imagem" class="form-label">Foto:</label>
-    <input type="file" class="form-control" name="imagem">
+    <label for="pImagem" class="form-label">Foto:</label>
+    <input type="file" class="form-control" name="pImagem">
   </div>
   <div class="col-12">
     <label for="pDescricao" class="form-label">Descrição do produto: </label>

@@ -16,7 +16,8 @@
 
 <div class="col">
     <div class="card">
-      <img src="imagens/produtos/produto.jpg" class="card-img-top" alt="...">
+      <img src="../controlers/controlerImagem.php?produto_id=<?=$produto->produto_id?>"
+             class="card-img-top" name='name' alt="Imagem do Produto <?=$produto->nome?>">
       <div class="card-body">
         <h5 class="card-title"><?= $produto->nome ?></h5>
         <p class="card-text"><?= $produto->resumo ?></p>

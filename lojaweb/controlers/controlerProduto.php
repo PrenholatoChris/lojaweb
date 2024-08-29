@@ -1,6 +1,8 @@
 <?php 
     require_once '../classes/produto.inc.php';
     require_once '../dao/produtoDao.inc.php';
+    require_once '../dao/imagemDao.inc.php';
+
     session_start();
 
     if(!isset($_REQUEST["pOpcao"])){
@@ -17,10 +19,19 @@
         $prd->descricao = $_REQUEST["pDescricao"];
         $prd->data_fabricacao = $_REQUEST["pDataFabricacao"];
         $prd->resumo = $_REQUEST["pResumo"];
-        
+
+        $imageName = $_FILES['pImagem']['name'];
+        $imageType = $_FILES['pImagem']['type'];
+        $imageData = file_get_contents($_FILES['pImagem']['tmp_name']);
+
         $dao = new ProdutoDao();
         $dao->insertProduto($prd);
-        header('Location: controlerFabricante.php?pOpcao=1');
+        $produto_id = $dao->getUltimoId();
+
+        $dao = new ImagemDao();
+        $dao->insertImagem($produto_id, $imageData, $imageType, $imageName);
+
+        header('Location: controlerProduto.php?pOpcao=2');
     }elseif ($opcao ==2 || $opcao == 6) {
         $dao = new ProdutoDao();
         $_SESSION['allProdutos'] = $dao->getAllProdutos();
