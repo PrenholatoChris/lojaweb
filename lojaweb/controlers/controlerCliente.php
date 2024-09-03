@@ -12,7 +12,11 @@
         $cliente = $clienteDao->autenticar($email,$senha);
         if($cliente != null){
             $_SESSION["clienteLogado"] = $cliente;
-            header("Location: ../controlers/controlerProduto.php?pOpcao=2");
+            if(isset($_SESSION["carrinho"])){
+                header("Location: ../views/dadosCompra.php");
+            }else{
+                header("Location: ../controlers/controlerProduto.php?pOpcao=6");
+            }
         }else{
             header("Location: ../views/formLogin.php?erro=1");
         }

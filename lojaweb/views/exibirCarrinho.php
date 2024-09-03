@@ -65,7 +65,15 @@
                         <a class="btn btn-danger" role="button" href="../controlers/controlerCarrinho.php?pOpcao=3"><b>Esvaziar carrinho</b></a>
                   </div>
                   <div class="col">
-                        <a class="btn btn-success" role="button" href="#"><b>Finalizar compra</b></a>
+                        <!-- <?php 
+                              // if(isset($_SESSION['clienteLogado'])){
+                              //       echo "<a class='btn btn-success' role='button' href='" . "./dadosCompra.php" . "'><b>Finalizar compra</b></a>";           
+                              // }else{
+                              //       echo "<a class='btn btn-success' role='button' href='" . "./formLogin.php" . "'><b>Finalizar compra</b></a>";           
+                              // }
+                        ?> -->
+
+                        <a class='btn btn-success' role='button' href='../controlers/controlerCarrinho.php?pOpcao=5&total=<?=$soma?>'><b>Finalizar compra</b></a>
                   </div>
             </div>
       </div>

@@ -13,7 +13,7 @@
     session_start();
     $tipo = 'C';
     if(isset($_SESSION["clienteLogado"])){
-      $tipo = $_SESSION["clienteLogado"]["tipo"];
+      $tipo = $_SESSION["clienteLogado"]->tipo;
     }   
 
     require_once "menu$tipo.inc.php";

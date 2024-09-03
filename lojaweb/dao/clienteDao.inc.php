@@ -1,12 +1,17 @@
 <?php 
 require_once 'conexao.inc.php';
 
+
 class ClienteDao{
     private $con;
 
     function __construct(){
         $c = new Conexao();
         $this->con = $c->getConexao();
+    }
+
+    function toClass(){
+
     }
 
     function autenticar($email, $senha){
@@ -20,7 +25,7 @@ class ClienteDao{
 
         $cliente = null;
         if($query->rowCount() == 1){
-            $cliente = $query->fetch(PDO::FETCH_ASSOC);
+            $cliente = $query->fetch(PDO::FETCH_OBJ);
         }
         
         return $cliente;
@@ -28,7 +33,7 @@ class ClienteDao{
 
     function getAllClientes(){
         $clientes = $this->con->query("SELECT * FROM CLIENTES");
-        return $clientes->fetch(PDO::FETCH_ASSOC);
+        return $clientes->fetch(PDO::FETCH_OBJ);
     }
 
     function insertCliente($cnpj, $nome, $logradouro, $cidade, $estado, $cep, $telefone, $data_nascimento, $email, $senha, $rg, $tipo){

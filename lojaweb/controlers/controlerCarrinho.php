@@ -46,11 +46,23 @@
         unset($_SESSION['carrinho']);
         header("Location: controlerCarrinho.php?pOpcao=4");
     }elseif($opcao == 4){
+        #verifica carrinho vazio
         session_start();
         if(!isset($_SESSION['carrinho']) || sizeof($_SESSION['carrinho'])==0){
             header('Location: ../views/exibirCarrinho.php?status=1');
         }else{
             header('Location: ../views/exibirCarrinho.php');
+        }
+    }elseif($opcao ==5){
+        #finaliza carrinho
+        session_start();
+        $total = $_REQUEST["total"];
+        $_SESSION['total'] = $total;
+
+        if(isset($_SESSION["clienteLogado"])){
+            header('Location: ../views/dadosCompra.php');
+        }else{
+            header('Location: ../views/formLogin.php');
         }
     }
 

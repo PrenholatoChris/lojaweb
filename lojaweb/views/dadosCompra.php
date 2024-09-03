@@ -1,17 +1,21 @@
 <?php 
+      require_once '../classes/item.inc.php';
+      require_once '../classes/produto.inc.php';
+
       require_once "includes/cabecalho.inc.php";
 
+      $cliente = $_SESSION["clienteLogado"];
  ?>
 
 <h1 class="text-center">Dados do cliente</h1>
 
 <p>&nbsp;
 <div style="font-size: 1.25rem;">
-      <p><b>Nome:</b> Nome do cliente
-      <p><b>CPF:</b> CPF do cliente
-      <p><b>Endereço Completo:</b> Endereço com todos os campos.
-      <p><b>Telefone:</b> Telefone do cliente
-      <p><b>Email:</b> E-mail do cliente
+      <p><b>Nome:</b> <?= $cliente->nome?>
+      <p><b>CPF:</b> <?= $cliente->cpf?>
+      <p><b>Endereço Completo:</b> <?= "$cliente->cidade, $cliente->estado. $cliente->logradouro"?>
+      <p><b>Telefone:</b> <?= $cliente->telefone?>
+      <p><b>Email:</b> <?= $cliente->email?>
       </font>
       <p><hr><p>&nbsp;
 </div>
@@ -35,25 +39,34 @@
       <tbody class="table-group-divider">
 <?php
           // percurso do carrinho aqui!
+          $carrinho = $_SESSION["carrinho"];
+          foreach($carrinho as $item) { 
+            // $item  = new Item(new Produto());
+            
 
 ?>
             <tr class="align-middle" style="text-align: center">
                   <td><img src="imagens/produtos/produto.jpg" width="100" height="100" border="0"></td>
-                  <td>ID 0</td>
-                  <td>Nome aqui</td>
-                  <td>Fabricante XXX</td>
-                  <td>R$ 000,00</td>
-                  <td>N</td>
-                  <td>R$ N * 000,00</td>
+                  <td><?=$item->getProduto()->produto_id?></td>
+                  <td><?=$item->getProduto()->nome?></td>
+                  <td><?=$item->getProduto()->nome_fabricante?></td>
+                  <td>R$ <?=$item->getProduto()->preco?></td>
+                  <td><?=$item->getQuantidade()?></td>
+                  <td>R$ <?=$item->getValorItem()?></td>
             </tr>
+<?php
+      }
+
+
+?>
           <!-- percurso termina aqui -->
             
-          <tr align="right"><td colspan="7"><font face="Verdana" size="4" color="red"><b>Valor Total = R$ total</b></font></td></tr>
+          <tr align="right"><td colspan="7"><font face="Verdana" size="4" color="red"><b>Valor Total = R$ <?=$_SESSION["total"]?></b></font></td></tr>
           </table>
           <div class="container text-center">
             <div class="row">
                   <div class="col">
-                        <a class="btn btn-success" role="button" href="#"><b>Efetuar o pagamento</b></a>
+                        <a class="btn btn-success" role="button" href="./dadosPagamento.php"><b>Efetuar o pagamento</b></a>
                   </div>                 
             </div>
          </div>

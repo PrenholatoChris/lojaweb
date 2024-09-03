@@ -15,9 +15,9 @@
                     <ul class="dropdown-menu">
                       <li><a class="dropdown-item" href="../controlers/controlerFabricante.php?pOpcao=2">Cadastrar</a></li>
                       <li><a class="dropdown-item" href="#">Cadastrar Vários</a></li>
-                      <li><a class="dropdown-item" href="#">Consultar</a></li>
+                      <li><a class="dropdown-item" href="../controlers/controlerProduto.php?pOpcao=2">Consultar</a></li>
                       <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="../controlers/controlerProduto.php?pOpcao=2">Show Room</a></li>
+                      <li><a class="dropdown-item" href="../controlers/controlerProduto.php?pOpcao=6">Show Room</a></li>
                     </ul>
                   </li>
 
@@ -42,7 +42,7 @@
                   <li><a href="#" class="nav-link px-2 link-dark">Contato</a></li>
 
                   <li>
-                    <a class="nav-link px-2 link-dark" href="#">
+                    <a class="nav-link px-2 link-dark" href="../controlers/controlerCarrinho.php?pOpcao=4">
                         <img src="imagens/cart3.png" alt="">
                     </a>
                   </li>
