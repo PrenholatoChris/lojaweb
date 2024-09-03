@@ -23,14 +23,14 @@ class ProdutoDao{
         $produto->resumo = $row->resumo;
         $produto->referencia = $row->referencia;
         $produto->cod_fabricante = $row->cod_fabricante;
-        $produto->imagem = $row->imagem;
+        $produto->nome_fabricante = $row->nome_fabricante;
         return $produto;
     }
 
     function getProdutoById($id){
         $produto = $this->con->query("SELECT *, (select NOME FROM FABRICANTES WHERE CODIGO = PRODUTOS.COD_FABRICANTE) AS nome_fabricante FROM PRODUTOS WHERE PRODUTO_ID = $id");
         $prd = $produto->fetch(PDO::FETCH_OBJ);
-        // $prd = $this->sqlToClass($prd);
+        $prd = $this->toClass($prd);
         
         return $prd;
     }

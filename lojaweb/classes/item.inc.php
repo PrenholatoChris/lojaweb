@@ -1,10 +1,16 @@
 <?php 
 
+require_once 'produto.inc.php';
 class Item{
     private int $quantidade;
     private float $valorItem;
     private Produto $produto;
 
+    function __construct($produto){
+        $this->quantidade = 1;
+        $this->produto = $produto;
+        $this->valorItem = $produto->preco;
+    }
 
     public function getValorItem(){
         return $this->valorItem;
@@ -20,7 +26,6 @@ class Item{
 
     public function setQuantidade(){
         $this->quantidade++;
-        // $this->setvalorItem();
     }
 
     public function getProduto(){

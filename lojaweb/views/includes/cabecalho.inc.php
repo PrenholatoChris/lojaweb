@@ -10,8 +10,8 @@
         <div class="container">
 <?php
     // tratamento do menu para cada usuário!
-    $tipo = 'C';
     session_start();
+    $tipo = 'C';
     if(isset($_SESSION["clienteLogado"])){
       $tipo = $_SESSION["clienteLogado"]["tipo"];
     }   

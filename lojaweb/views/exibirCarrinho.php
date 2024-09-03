@@ -1,4 +1,5 @@
 <?php
+     require_once '../classes/item.inc.php';
      require_once 'includes/cabecalho.inc.php';
     
 ?>
@@ -6,12 +7,13 @@
 <h1 class="text-center">Carrinho de compra</h1>
 <p> 
 <?php
-     // validação de carrinho vazio
-     if(isset($_SESSION["carrinho"])){
-            $carrinho = $_SESSION["carrinho"];
+
+     $carrinho = [];
+     if(isset($_REQUEST['status'])){
+            include_once '../views/includes/carrinhoVazio.inc.php';
      }else{
-            $carrinho = [];
-     }
+            $carrinho = $_SESSION["carrinho"];
+     
 
 ?>
 <div class="table-responsive">
@@ -29,30 +31,28 @@
             </tr>
       </thead>
       <tbody class="table-group-divider">
-      <?php
-            // percurso inicia aqui             
+      <?php        
             $soma = 0;
-            $count = 1;
-            foreach ($carrinho as $produto) {
+            $count = 0;
+            $count++;
+            
+            foreach ($carrinho as $item) {
       ?>
             <tr class="align-middle" style="text-align: center">
                   <td><?= $count ?></td>
-                  <td><?= $produto->produto_id ?></td>
-                  <td><?= $produto->nome ?></td>
-                  <td><?= $produto->nome_fabricante ?></td>
-                  <td><?= $produto->preco ?></td>
-                  <td>N</td>
-                  <td>R$ Valor Item</td>
-                  <td><a href="#" class='btn btn-danger btn-sm'>X</a></td>
-                  
+                  <td><?= $item->getProduto()->produto_id ?></td>
+                  <td><?= $item->getProduto()->nome ?></td>
+                  <td><?= $item->getProduto()->nome_fabricante ?></td>
+                  <td><?= $item->getProduto()->preco ?></td>
+                  <td><?= $item->getQuantidade() ?></td>
+                  <td>R$ <?=$item->getValorItem() ?></td>
+                  <td><a href="../controlers/controlerCarrinho.php?pOpcao=2&index=<?=$count-1?>" class='btn btn-danger btn-sm'>X</a></td>
             </tr>
       <?php
-            $count++;
-            $soma += $produto->preco;
+            $soma += $item->getValorItem();
 
             }
       ?>
-          <!-- percurso termina aqui -->
          
             <tr align="right"><td colspan="8"><font face="Verdana" size="4" color="red"><b>Valor Total = R$ <?= $soma ?></b></font></td></tr>
       </table> 
@@ -62,7 +62,7 @@
                         <a class="btn btn-warning" role="button" href="../controlers/controlerProduto.php?pOpcao=6"><b>Continuar comprando</b></a>
                   </div>
                   <div class="col">
-                        <a class="btn btn-danger" role="button" href="../controlers/controlerCarrinho.php?pOpcao=2"><b>Esvaziar carrinho</b></a>
+                        <a class="btn btn-danger" role="button" href="../controlers/controlerCarrinho.php?pOpcao=3"><b>Esvaziar carrinho</b></a>
                   </div>
                   <div class="col">
                         <a class="btn btn-success" role="button" href="#"><b>Finalizar compra</b></a>
@@ -71,5 +71,6 @@
       </div>
 
 <?php
+     }
      require_once 'includes/rodape.inc.php';
 ?>
