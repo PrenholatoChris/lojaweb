@@ -50,7 +50,7 @@ class ProdutoDao{
         $query->bindValue(':descricao',$produto->descricao);
         $query->bindValue(':resumo',$produto->resumo);
         $query->bindValue(':referencia',$produto->referencia);
-        $query->bindValue(':cod_fabricante',1000);//$produto->cod_fabricante);
+        $query->bindValue(':cod_fabricante',$produto->cod_fabricante);
         $query->execute();
     }
 

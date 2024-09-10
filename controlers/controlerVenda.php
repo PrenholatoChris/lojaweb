@@ -23,8 +23,8 @@
         unset($_SESSION["carrinho"]);
         $tipo = $_REQUEST["pag"];
         if($tipo== "boleto"){
-            // header("Location: ../views/boleto/meuBoleto.php");
-            echo "Boleto emitido!";
+            header("Location: ../views/boleto/meuBoleto.php");
+            // echo "Boleto emitido!";
         }else{
             echo "Validar compra com cartão!!!";
         }
