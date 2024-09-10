@@ -6,7 +6,7 @@ class Venda{
     private $valorTotal;
     private $data;
 
-    function Venda($cpf, $valor){
+    function __construct($cpf, $valor){
         $this->cpf = $cpf;
         $this->valorTotal = $valor;
         $this->data = time();

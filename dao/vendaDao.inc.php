@@ -1,5 +1,9 @@
 <?php 
+require_once 'conexao.inc.php';
 require_once '../utils/funcoesUteis.php';
+require_once '../classes/venda.inc.php';
+require_once '../classes/item.inc.php';
+
 
 class VendaDao{
     private $con;
@@ -7,10 +11,9 @@ class VendaDao{
     function __construct(){
         $c = new Conexao();
         $this->con = $c->getConexao();
-    
     }
 
-    public function incluirVenda($venda,$carrinho){
+    public function incluirVenda($venda, $carrinho){
         $sql = $this->con->prepare("insert into vendas 
         (cpf_cliente, dataVenda, valorTotal)
         values (:cpf, :data, :val)");

@@ -36,10 +36,10 @@ class ClienteDao{
         return $clientes->fetch(PDO::FETCH_OBJ);
     }
 
-    function insertCliente($cnpj, $nome, $logradouro, $cidade, $estado, $cep, $telefone, $data_nascimento, $email, $senha, $rg, $tipo){
-        $query = $this->con->prepare("INSERT INTO CLIENTE (CNPJ, NOME, LOGRADOURO, CIDADE, ESTADO, CEP, TELEFONE, DATA_NASCIMENTO, EMAIL, RG, TIPO)
-        VALUES (:cnpj, :nome, :logradouro, :cidade, :estado, :cep, :telefone, :data_nascimento, :email, :senha, :rg, :tipo)");
-        $query->bindValue(':cnpj',$cnpj);
+    function insertCliente($cpf, $nome, $logradouro, $cidade, $estado, $cep, $telefone, $data_nascimento, $email, $senha, $rg, $tipo){
+        $query = $this->con->prepare("INSERT INTO CLIENTE (cpf, NOME, LOGRADOURO, CIDADE, ESTADO, CEP, TELEFONE, DATA_NASCIMENTO, EMAIL, RG, TIPO)
+        VALUES (:cpf, :nome, :logradouro, :cidade, :estado, :cep, :telefone, :data_nascimento, :email, :senha, :rg, :tipo)");
+        $query->bindValue(':cpf',$cpf);
         $query->bindValue(':nome',$nome);
         $query->bindValue(':logradouro',$logradouro);
         $query->bindValue(':cidade',$cidade);
