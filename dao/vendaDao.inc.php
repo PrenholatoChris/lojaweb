@@ -32,12 +32,14 @@ class VendaDao{
         foreach($carrinho as $item){
             $sql = $this->con->prepare("insert into itens 
             (id_produto, quantidade, valorTotal, id_venda) 
-            values (:idPub, :q, :val, :idV");
+            values (:idPub, :q, :val, :idV)");
 
             $sql->bindValue(":idPub", $item->getProduto()->produto_id);
             $sql->bindValue(":q", $item->getQuantidade());
             $sql->bindValue(":val", $item->getValorItem());
-            $sql->bindValue(":q", $idVenda);
+            $sql->bindValue(":idV", $idVenda);
+            $sql->execute();
+
         }
     }
     
