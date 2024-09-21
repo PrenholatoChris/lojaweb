@@ -41,4 +41,4 @@ Se desejar contribuir para o projeto, por favor, siga estas diretrizes:
 
 ## Autores
 
-Desenvolvido por [Christian Prenholato](https://github.com/PrenholatoChris) (substitua com seu nome e link para o seu perfil GitHub).
+Desenvolvido por [Christian Prenholato](https://github.com/PrenholatoChris).
